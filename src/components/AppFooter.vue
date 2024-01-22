@@ -5,15 +5,21 @@ export default {
 
         };
     },
-    methods: {
-
+    props: {
+        charactersNumber: Number
     }
 }
 </script>
 
 <template>
-    <footer>
-        FOOTER
+    <footer class="mt-4">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col py-3 fw-bold">
+                    Found {{ charactersNumber }} characters
+                </div>
+            </div>
+        </div>
     </footer>
 </template>
 
