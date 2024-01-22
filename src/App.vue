@@ -3,12 +3,12 @@ import AppHeader from './components/AppHeader.vue';
 import AppMain from './components/AppMain.vue';
 import AppFooter from './components/AppFooter.vue';
 import axios from 'axios';
+import { store } from './store.js';
 
 export default {
     data() {
         return {
-            baseUrl: 'https://rickandmortyapi.com/api/character',
-            characters: []
+            store
         };
     },
     components: {
@@ -21,11 +21,11 @@ export default {
     },
     created() {
         axios
-            .get(this.baseUrl)
+            .get(this.store.baseUrl)
             .then((response) => {
                 console.log(response);
-                this.characters = response.data.results;
-                console.log(this.characters);
+                this.store.characters = response.data.results;
+                console.log(this.store.characters);
             });
     }
 }
@@ -34,9 +34,9 @@ export default {
 <template>
     <AppHeader />
 
-    <AppMain :allCharacters="characters" />
+    <AppMain />
 
-    <AppFooter :charactersNumber="characters.length" />
+    <AppFooter />
 </template>
 
 <style lang="scss">
