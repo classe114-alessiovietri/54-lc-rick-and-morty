@@ -17,22 +17,35 @@ export default {
         AppFooter
     },  
     methods: {
-
+        getResults() {
+            axios
+                .get(this.store.baseUrl, {
+                    params: {
+                        name: this.store.searchText,
+                        status: this.store.searchStatus,
+                    }    
+                })
+                .then((response) => {
+                    console.log(response);
+                    this.store.characters = response.data.results;
+                    console.log(this.store.characters);
+                })
+                .catch((error) => {
+                    this.store.characters = [];
+                })
+                .finally(() => {
+                    console.log('Questo console.log viene eseguito sempre alla fine della chiamata API');
+                });
+        }
     },
     created() {
-        axios
-            .get(this.store.baseUrl)
-            .then((response) => {
-                console.log(response);
-                this.store.characters = response.data.results;
-                console.log(this.store.characters);
-            });
+        this.getResults();
     }
 }
 </script>
 
 <template>
-    <AppHeader />
+    <AppHeader @performSearch="getResults()" />
 
     <AppMain />
 
