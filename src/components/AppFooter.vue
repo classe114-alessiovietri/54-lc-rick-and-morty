@@ -5,6 +5,8 @@ export default {
     data() {
         return {
             store,
+            firstName: 'Alessio',
+            lastName: 'Vietri',
             numeroACaso: 6
         };
     },
@@ -80,6 +82,7 @@ export default {
                     INCREMENTA NUMERO
                 </button>
             </div>
+
             <div class="row">
                 <div class="col-12 py-3 fw-bold">
                     Found {{ store.characters.length }} characters

@@ -9,43 +9,9 @@ export default {
         };
     },
     methods: {
-        // getDataFromApi() {
-        //     // let queryString = '';
-
-        //     // if (this.searchText.length > 0 || this.searchStatus.length > 0) {
-        //     //     queryString = '?';
-
-        //     //     if (this.searchText.length > 0) {
-        //     //         queryString += 'name=' + this.searchText + '&';
-        //     //     }
-
-        //     //     if (this.searchStatus.length > 0) {
-        //     //         queryString += 'status=' + this.searchStatus;
-        //     //     }
-        //     // }
-
-        //     // const fullUrl = this.store.baseUrl + queryString;
-        //     // console.log(fullUrl);
-
-        //     // axios
-        //     //     .get(this.store.baseUrl, {
-        //     //         params: {
-        //     //             name: this.searchText,
-        //     //             status: this.searchStatus,
-        //     //         }    
-        //     //     })
-        //     //     .then((response) => {
-        //     //         console.log(response);
-        //     //         this.store.characters = response.data.results;
-        //     //         console.log(this.store.characters);
-        //     //     })
-        //     //     .catch((error) => {
-        //     //         this.store.characters = [];
-        //     //     })
-        //     //     .finally(() => {
-        //     //         console.log('Questo console.log viene eseguito sempre alla fine della chiamata API');
-        //     //     });
-        // }
+        sendMessageToParent() {
+            this.$emit('performSearch');
+        }
     }
 }
 </script>
@@ -63,6 +29,7 @@ export default {
 
             <div class="row">
                 <div class="col-6 offset-3">
+                    <!-- <form @submit.prevent="sendMessageToParent()"> -->
                     <form @submit.prevent="$emit('performSearch')">
                         <div class="row">
                             <div class="col">
